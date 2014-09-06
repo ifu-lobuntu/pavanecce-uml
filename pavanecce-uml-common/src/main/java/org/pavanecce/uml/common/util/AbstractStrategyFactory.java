@@ -13,7 +13,6 @@ public abstract class AbstractStrategyFactory {
 
 	Set<ISimpleTypeStrategy> typeSystemStrategies = new HashSet<ISimpleTypeStrategy>();
 
-	@SafeVarargs
 	protected AbstractStrategyFactory(Class<? extends ISimpleTypeStrategy>... classes) {
 		for (Class<? extends ISimpleTypeStrategy> cls : classes) {
 			addStrategy(cls);

@@ -10,7 +10,6 @@ public class EmulatedPropertyHolderForBehavior extends EmulatedPropertyHolderFor
 		// getEmulatedAttributes().addAll(EmfTimeUtil.buildObservationPropertiess(owner, e, owner));
 	}
 
-	@SafeVarargs
 	protected EmulatedPropertyHolderForBehavior(Behavior owner, IPropertyEmulation e, EList<? extends TypedElement>... typedElements) {
 		super(owner, e, typedElements);
 		// getEmulatedAttributes().addAll(EmfTimeUtil.buildObservationPropertiess(owner, e, owner));

@@ -119,9 +119,9 @@ public class OclReturnValueEvaluatorBuilder implements ReturnValueEvaluatorBuild
 
 		int i = -1;
 		while (0 <= (i = returnValueDescr.getText().indexOf(cfi.getName(), fromIndex))) {
-			if (i == 0 || (returnValueDescr.getText().charAt(i - 1) != '.' && !Character.isAlphabetic(returnValueDescr.getText().charAt(i - 1)))) {
+			if (i == 0 || (returnValueDescr.getText().charAt(i - 1) != '.' && !Character.isLetter(returnValueDescr.getText().charAt(i - 1)))) {
 				char charAt = returnValueDescr.getText().charAt(i + cfi.getName().length());
-				boolean isPartOfOtherName = Character.isAlphabetic(charAt);
+				boolean isPartOfOtherName = Character.isLetter(charAt);
 				if (!isPartOfOtherName) {
 					return true;
 				}

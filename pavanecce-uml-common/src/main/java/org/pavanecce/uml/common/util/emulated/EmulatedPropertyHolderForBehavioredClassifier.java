@@ -8,7 +8,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.TypedElement;
 
 public class EmulatedPropertyHolderForBehavioredClassifier extends EmulatedPropertyHolder {
-	@SafeVarargs
 	protected EmulatedPropertyHolderForBehavioredClassifier(BehavioredClassifier owner, IPropertyEmulation e, EList<? extends TypedElement>... typedElements) {
 		super(owner, e, typedElements);
 	}
