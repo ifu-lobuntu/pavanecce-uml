@@ -1,3 +1,4 @@
+[![Build Status](http://www.ifu-lobuntu.org:8080/job/pavanecce-uml/badge/icon)](http://www.ifu-lobuntu.org:8080/job/pavanecce-uml/)
 This POM project contains all the projects that deal with UML, potentially in a standalone, non-Eclipse environment
 Although these modules are written to run outside of Eclipse, they all still have a strong dependency on
 the Eclipse EMF, UML and OCL bundles. 
