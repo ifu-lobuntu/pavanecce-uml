@@ -94,7 +94,7 @@ public abstract class AbstractPersistenceTest extends Assert {
 		} catch (Exception e) {
 		}
 		try {
-			// eval("p.close();");
+			 eval("p.close();");
 		} catch (Exception e) {
 		}
 
