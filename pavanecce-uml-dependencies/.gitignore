@@ -1,0 +1,7 @@
+target
+test-output
+libs
+libs-sources
+.project
+.classpath
+.settings
