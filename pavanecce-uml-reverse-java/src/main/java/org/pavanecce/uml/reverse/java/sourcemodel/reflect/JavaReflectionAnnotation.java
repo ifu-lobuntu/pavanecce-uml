@@ -37,7 +37,11 @@ public class JavaReflectionAnnotation implements SourceAnnotation {
 					} else {
 						attributeValues.put(v.getName(), convertSingleValue(value));
 					}
-				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+				} catch (IllegalAccessException e){
+					throw new RuntimeException(e);
+				} catch (IllegalArgumentException e){
+					throw new RuntimeException(e);
+				} catch (InvocationTargetException e) {
 					throw new RuntimeException(e);
 				}
 			}
@@ -62,7 +66,9 @@ public class JavaReflectionAnnotation implements SourceAnnotation {
 			try {
 				Field field = fromValue.getClass().getDeclaredField(((Enum<?>) fromValue).name());
 				value = new JavaReflectionVariable(field, factory);
-			} catch (NoSuchFieldException | SecurityException e) {
+			} catch (NoSuchFieldException e){
+				throw new IllegalArgumentException(e);
+			} catch (SecurityException e) {
 				throw new IllegalArgumentException(e);
 			}
 		} else if (fromValue instanceof Type) {

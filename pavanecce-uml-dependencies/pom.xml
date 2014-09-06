@@ -11,11 +11,7 @@
 	<!-- Using this packaging to activate tycho's OSGi dependency resolution -->
 	<packaging>eclipse-plugin</packaging>
 	<repositories>
-		<repository>
-			<id>luna</id>
-			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/luna</url>
-		</repository>
+
 	</repositories>
 	<build>
 		<plugins>
