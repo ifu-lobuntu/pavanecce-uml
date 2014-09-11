@@ -11,6 +11,11 @@
 	<!-- <packaging>bundle</packaging> -->
 	<dependencies>
 		<dependency>
+			<groupId>${project.parent.groupId}</groupId>
+			<artifactId>pavanecce-uml-dependencies</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
 			<version>5.0.0</version>
@@ -40,16 +45,16 @@
 			<artifactId>pavanecce-uml-ocl2code</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>${project.parent.groupId}</groupId>
-			<artifactId>pavanecce-cmmn-tests</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.parent.groupId}</groupId>
-			<artifactId>pavanecce-uml-jbpm</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>${project.parent.groupId}</groupId> -->
+		<!-- <artifactId>pavanecce-cmmn-tests</artifactId> -->
+		<!-- <version>${project.parent.version}</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>${project.parent.groupId}</groupId> -->
+		<!-- <artifactId>pavanecce-uml-jbpm</artifactId> -->
+		<!-- <version>${project.parent.version}</version> -->
+		<!-- </dependency> -->
 		<dependency>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>pavanecce-uml-reverse-java</artifactId>
@@ -70,26 +75,31 @@
 			<artifactId>pavanecce-common-ocm</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-container-native</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-junit4</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.exam</groupId>
-			<artifactId>pax-exam-link-mvn</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ops4j.pax.url</groupId>
-			<artifactId>pax-url-aether</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.felix</groupId>
-			<artifactId>org.apache.felix.framework</artifactId>
-		</dependency>
+
+		<!-- <dependency> -->
+		<!-- <groupId>org.ops4j.pax.exam</groupId> -->
+		<!-- <artifactId>pax-exam-container-native</artifactId> -->
+		<!-- <version>4.1.0</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.ops4j.pax.exam</groupId> -->
+		<!-- <artifactId>pax-exam-junit4</artifactId> -->
+		<!-- <version>4.1.0</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.ops4j.pax.exam</groupId> -->
+		<!-- <artifactId>pax-exam-link-mvn</artifactId> -->
+		<!-- <version>4.1.0</version> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.ops4j.pax.url</groupId> -->
+		<!-- <artifactId>pax-url-aether</artifactId> -->
+		<!-- </dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.felix</groupId> -->
+		<!-- <artifactId>org.apache.felix.framework</artifactId> -->
+		<!-- <version>4.0.3</version> -->
+		<!-- </dependency> -->
 	</dependencies>
 	<build>
 		<plugins>
