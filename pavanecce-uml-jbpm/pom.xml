@@ -21,9 +21,9 @@
 			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>${project.parent.groupId}</groupId>
-			<artifactId>pavanecce-cmmn-jbpm</artifactId>
-			<version>${project.parent.version}</version>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-cmmn-flow-builder</artifactId>
+			<version>6.2.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.pavanecce</groupId>
