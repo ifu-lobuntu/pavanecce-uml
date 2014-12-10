@@ -35,9 +35,6 @@ import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
 
 public class RoundTripTests extends AbstractPotentiallyJavaCompilingTest {
 
-	protected EmfCodeModelBuilder builder;
-	protected Model model;
-
 	private UmlResourceSetFactory resourceSetFactory = new UmlResourceSetFactory(fileLocator);
 
 	@Override

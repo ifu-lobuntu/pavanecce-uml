@@ -27,7 +27,7 @@ import org.pavanecce.uml.common.util.emulated.AssociationClassToEnd;
 import org.pavanecce.uml.common.util.emulated.EndToAssociationClass;
 import org.pavanecce.uml.common.util.emulated.InverseArtificialProperty;
 import org.pavanecce.uml.common.util.emulated.NonInverseArtificialProperty;
-
+import org.eclipse.uml2.uml.Class;
 public class EmfPropertyUtil {
 
 	public static boolean isDerived(Property p) {
@@ -38,7 +38,7 @@ public class EmfPropertyUtil {
 		Property result = null;
 		for (Association association : c.getAssociations()) {
 			for (Property property : association.getMemberEnds()) {
-				if (property.getType() == c && property.isComposite() && property.getOtherEnd().isNavigable()) {
+				if (property.getType() == c && property.isComposite() && isNavigable(property.getOtherEnd())) {
 					result = property.getOtherEnd();
 					break;
 				}
@@ -163,7 +163,7 @@ public class EmfPropertyUtil {
 		for (Association a : c.getAssociations()) {
 			for (Property end : a.getMemberEnds()) {
 				if (end.getOtherEnd() != null && end.getOtherEnd().getType() != null
-						&& EmfClassifierUtil.conformsTo(c, (Classifier) end.getOtherEnd().getType()) && end.isNavigable() && end.getOwner() == a) {
+						&& EmfClassifierUtil.conformsTo(c, (Classifier) end.getOtherEnd().getType()) &&  isNavigable(end) && end.getOwner() == a) {
 					maybeAddProperty(c, nameMap, result, end);
 				}
 			}
@@ -192,7 +192,7 @@ public class EmfPropertyUtil {
 	}
 
 	public static Classifier getOwningClassifier(Property p) {
-		if (!p.isNavigable()) {
+		if (!isNavigable(p)) {
 			return p.getAssociation();
 		} else if (p.getOtherEnd() != null) {
 			return (Classifier) p.getOtherEnd().getType();
@@ -280,7 +280,7 @@ public class EmfPropertyUtil {
 	}
 
 	public static boolean isInverse(Property f) {
-		if (f.getOtherEnd() == null || !f.getOtherEnd().isNavigable()) {
+		if (f.getOtherEnd() == null || !isNavigable(f.getOtherEnd())) {
 			return false;
 		} else {
 			if (f instanceof EndToAssociationClass) {
@@ -379,5 +379,9 @@ public class EmfPropertyUtil {
 
 	public static boolean isManyToMany(Property p) {
 		return isMany(p) && isMany(p.getOtherEnd());
+	}
+
+	public static boolean isNavigable(Property p) {
+		return p.isNavigable() || (p.getOtherEnd()!=null  && p.getOtherEnd().isComposite() && p.getType() instanceof Class && p.getOtherEnd().getType() instanceof Class);
 	}
 }

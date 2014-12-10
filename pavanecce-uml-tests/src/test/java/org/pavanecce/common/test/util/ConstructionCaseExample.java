@@ -27,20 +27,10 @@ import org.pavanecce.common.util.NameConverter;
 import org.pavanecce.uml.common.util.LibraryImporter;
 import org.pavanecce.uml.common.util.StereotypeNames;
 import org.pavanecce.uml.common.util.UmlResourceSetFactory;
-import org.pavanecce.uml.ocl2code.OclCodeBuilder;
 import org.pavanecce.uml.test.uml2code.test.AdaptableFileLocator;
-import org.pavanecce.uml.uml2code.AbstractCodeGenerator;
-import org.pavanecce.uml.uml2code.codemodel.CodeModelBuilder;
-import org.pavanecce.uml.uml2code.codemodel.UmlCodeModelVisitorAdaptor;
-import org.pavanecce.uml.uml2code.java.AssociationCollectionCodeDecorator;
-import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
-import org.pavanecce.uml.uml2code.jpa.AbstractJavaCodeDecorator;
 
 public class ConstructionCaseExample extends AbstractPotentiallyJavaCompilingTest {
 	private ClassLoader oldContextClassLoader = Thread.currentThread().getContextClassLoader();
-	protected CodeModelBuilder builder;
-	private Model model;
-	private UmlCodeModelVisitorAdaptor adaptor;
 	protected UmlResourceSetFactory resourceSetFactory = new UmlResourceSetFactory(new AdaptableFileLocator());
 	private String testName;
 	private Class roomPlan;
@@ -51,7 +41,6 @@ public class ConstructionCaseExample extends AbstractPotentiallyJavaCompilingTes
 	private Class constructionCase;
 	private Enumeration houseStatus;
 	private ResourceSet rst;
-	private TextFileGenerator textFileGenerator;
 	private Model primitiveTypes;
 	private Model simpleTypes;
 	private Class roofPlan;
@@ -187,46 +176,14 @@ public class ConstructionCaseExample extends AbstractPotentiallyJavaCompilingTes
 		return name;
 	}
 
-	public void generateCode(AbstractCodeGenerator codeGenerator, AbstractJavaCodeDecorator... decorators) throws Exception {
-		setup(new CodeModelBuilder(true), codeGenerator, decorators);
-	}
-
-	public void setup(CodeModelBuilder codeModelBuilder, AbstractCodeGenerator codeGenerator, AbstractJavaCodeDecorator... decorators) throws Exception {
-		this.builder = codeModelBuilder;
-		super.setup();
-		super.setJavaCodeGenerator(codeGenerator);
-		if (getCodeGenerator() instanceof JavaCodeGenerator) {
-			JavaCodeGenerator jcg = (JavaCodeGenerator) getCodeGenerator();
-			jcg.addDecorator(new AssociationCollectionCodeDecorator());
-			for (AbstractJavaCodeDecorator cd : decorators) {
-				jcg.addDecorator(cd);
-			}
-		}
-		setAdaptor(new UmlCodeModelVisitorAdaptor());
-		this.getAdaptor().startVisiting(builder, getModel());
-		this.getAdaptor().startVisiting(new OclCodeBuilder(), getModel());
-		this.textFileGenerator = generateSourceCode(this.getAdaptor().getCodeModel());
-		if (getCodeGenerator() instanceof JavaCodeGenerator) {
-			setClassLoader(super.compile(textFileGenerator.getNewFiles()));
-		}
-	}
-
 	public void setClassLoader(ClassLoader classLoader) {
 		super.setClassLoader(classLoader);
 		oldContextClassLoader = Thread.currentThread().getContextClassLoader();
 		Thread.currentThread().setContextClassLoader(classLoader);
 	}
 
-	public TextFileGenerator getTextFileGenerator() {
-		return textFileGenerator;
-	}
-
 	public ClassLoader getOldContextClassLoader() {
 		return oldContextClassLoader;
-	}
-
-	public CodeModelBuilder getBuilder() {
-		return builder;
 	}
 
 	public UmlResourceSetFactory getResourceSetFactory() {
@@ -260,22 +217,6 @@ public class ConstructionCaseExample extends AbstractPotentiallyJavaCompilingTes
 
 	public void after() {
 		Thread.currentThread().setContextClassLoader(oldContextClassLoader);
-	}
-
-	public UmlCodeModelVisitorAdaptor getAdaptor() {
-		return adaptor;
-	}
-
-	public void setAdaptor(UmlCodeModelVisitorAdaptor adaptor) {
-		this.adaptor = adaptor;
-	}
-
-	public Model getModel() {
-		return model;
-	}
-
-	public void setModel(Model model) {
-		this.model = model;
 	}
 
 	public Classifier getType(String string) {

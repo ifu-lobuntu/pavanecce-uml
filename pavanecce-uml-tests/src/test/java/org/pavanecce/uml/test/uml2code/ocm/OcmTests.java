@@ -25,6 +25,7 @@ import org.pavanecce.common.ocm.OcmObjectPersistence;
 import org.pavanecce.common.test.util.ConstructionCaseExample;
 import org.pavanecce.common.util.FileUtil;
 import org.pavanecce.uml.test.uml2code.jpa.AbstractPersistenceTest;
+import org.pavanecce.uml.uml2code.java.AssociationCollectionCodeDecorator;
 import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
 import org.pavanecce.uml.uml2code.ocm.CndTextGenerator;
 import org.pavanecce.uml.uml2code.ocm.DocumentModelBuilder;
@@ -39,7 +40,7 @@ public class OcmTests extends AbstractPersistenceTest {
 		FileUtil.deleteRoot(new File("./repository"));
 		System.setProperty("java.naming.factory.initial", "bitronix.tm.jndi.BitronixInitialContextFactory");
 		example = new ConstructionCaseExample("OcmPersistence");
-		example.generateCode(new JavaCodeGenerator(), new OcmCodeDecorator());
+		example.generateCode(new JavaCodeGenerator(), new AssociationCollectionCodeDecorator(), new OcmCodeDecorator());
 		List<Class> classes = getClasses();
 		File outputRoot = example.calculateBinaryOutputRoot();
 		File testCndFile = generateCndFile(outputRoot, new CndTextGenerator());

@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.pavanecce.common.test.util.ConstructionCaseExample;
 import org.pavanecce.uml.uml2code.AbstractCodeGenerator;
 import org.pavanecce.uml.uml2code.codemodel.CodeModelBuilder;
+import org.pavanecce.uml.uml2code.java.AssociationCollectionCodeDecorator;
 import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
 import org.pavanecce.uml.uml2code.jpa.AbstractJavaCodeDecorator;
 
@@ -29,7 +30,7 @@ public class AssociationCollectionTests extends Assert {
 	@BeforeClass
 	public static void setup() throws Exception {
 		JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
-		example.setup(new CodeModelBuilder(true), codeGenerator);
+		example.setup(new CodeModelBuilder(true), codeGenerator,new AssociationCollectionCodeDecorator());
 	}
 
 	@Test

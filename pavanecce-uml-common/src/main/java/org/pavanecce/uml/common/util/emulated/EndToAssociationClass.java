@@ -7,6 +7,7 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.pavanecce.common.util.NameConverter;
 import org.pavanecce.uml.common.util.EmfAssociationUtil;
+import org.pavanecce.uml.common.util.EmfPropertyUtil;
 import org.pavanecce.uml.common.util.EmfWorkspace;
 
 public class EndToAssociationClass extends AbstractEmulatedProperty {
@@ -60,7 +61,7 @@ public class EndToAssociationClass extends AbstractEmulatedProperty {
 
 	@Override
 	public boolean isNavigable() {
-		return property.isNavigable();
+		return EmfPropertyUtil.isNavigable( property);
 	}
 
 	@Override

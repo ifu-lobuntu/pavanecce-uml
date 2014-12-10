@@ -98,7 +98,7 @@ public class CodeModelBuilder extends DefaultCodeModelBuilder {
 		String getterName = generateGetterName(p, cf, capitalized);
 
 		CodeMethod getter = new CodeMethod(codeClass, getterName, cf.getType());
-		if (useAssociationCollections && p.getOtherEnd() != null && p.getOtherEnd().isNavigable() && EmfPropertyUtil.isMany(p) && p.isUnique()) {
+		if (useAssociationCollections && p.getOtherEnd() != null && EmfPropertyUtil.isNavigable(p.getOtherEnd()) && EmfPropertyUtil.isMany(p) && p.isUnique()) {
 			getter.setResultInitialValue(new ReadFieldExpression(fieldName + "Wrapper"));
 		} else {
 			getter.setResultInitialValue(new ReadFieldExpression(fieldName));
@@ -109,7 +109,7 @@ public class CodeModelBuilder extends DefaultCodeModelBuilder {
 		}
 		CodeParameter param = new CodeParameter("new" + capitalized, setter, cf.getType());
 		setter.setDeclaringClass(codeClass);
-		if (p.getOtherEnd() != null && p.getOtherEnd().isNavigable()) {
+		if (p.getOtherEnd() != null && EmfPropertyUtil.isNavigable(p.getOtherEnd())) {
 			if (EmfPropertyUtil.isManyToMany(p)) {
 				new AssignmentStatement(setter.getBody(), "${self}." + fieldName, new PortableExpression(param.getName()));
 			} else if (EmfPropertyUtil.isOneToMany(p)) {
@@ -158,7 +158,7 @@ public class CodeModelBuilder extends DefaultCodeModelBuilder {
 		CodeTypeReference result = null;
 		if (EmfPropertyUtil.isMany(te)) {
 			MultiplicityElement me = (MultiplicityElement) te;
-			if (useAssociationCollections && me instanceof Property && ((Property) me).getOtherEnd() != null && ((Property) me).getOtherEnd().isNavigable()) {
+			if (useAssociationCollections && me instanceof Property && ((Property) me).getOtherEnd() != null && EmfPropertyUtil.isNavigable( ((Property) me).getOtherEnd())) {
 				Property otherEnd = ((Property) me).getOtherEnd();
 				result = calculateAssociationType(me, otherEnd);
 				AssociationCollectionTypeReference associationCollectionTypeReference = (AssociationCollectionTypeReference) result;

@@ -68,7 +68,7 @@ public class EmfElementFinder {
 			return ((EAnnotation) s.eContainer()).getEModelElement();
 		} else if (s instanceof Property && s.eContainer() instanceof Association) {
 			Property p = (Property) s;
-			if (p.getOtherEnd() != null && p.isNavigable()) {
+			if (p.getOtherEnd() != null && EmfPropertyUtil.isNavigable(p)) {
 				return p.getOtherEnd().getType();
 			} else {
 				return s.eContainer();

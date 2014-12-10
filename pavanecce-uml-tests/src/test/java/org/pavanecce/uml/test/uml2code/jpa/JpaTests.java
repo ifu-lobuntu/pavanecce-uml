@@ -14,6 +14,7 @@ import org.pavanecce.common.code.metamodel.CodePackage;
 import org.pavanecce.common.jpa.JpaObjectPersistence;
 import org.pavanecce.common.test.util.ConstructionCaseExample;
 import org.pavanecce.uml.uml2code.AbstractCodeGenerator;
+import org.pavanecce.uml.uml2code.java.AssociationCollectionCodeDecorator;
 import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
 import org.pavanecce.uml.uml2code.jpa.JpaCodeDecorator;
 
@@ -22,7 +23,7 @@ public class JpaTests extends AbstractPersistenceTest {
 	@BeforeClass
 	public static void setup() throws Exception {
 		example = new ConstructionCaseExample("JpaPersistence");
-		example.generateCode(new JavaCodeGenerator(), new JpaCodeDecorator());
+		example.generateCode(new JavaCodeGenerator(), new AssociationCollectionCodeDecorator(), new JpaCodeDecorator());
 		Thread.currentThread().setContextClassLoader(example.getClassLoader());
 		TestPersistenceUnitInfo pui = new TestPersistenceUnitInfo("construction", example.getClassLoader());
 		addMappedClasses(pui, example.getAdaptor().getCodeModel(), example.getCodeGenerator());

@@ -109,7 +109,7 @@ public class ArtificialElementFactory implements IPropertyEmulation {
 		Iterator<Property> iterator = propertiesInScope.iterator();
 		while (iterator.hasNext()) {
 			Property property = iterator.next();
-			if (!property.isNavigable()) {
+			if (!EmfPropertyUtil.isNavigable(property)) {
 				iterator.remove();
 			}
 		}
@@ -123,7 +123,7 @@ public class ArtificialElementFactory implements IPropertyEmulation {
 		Iterator<Property> iterator = result.iterator();
 		while (iterator.hasNext()) {
 			Property property = iterator.next();
-			if (!(property.isNavigable())) {
+			if (!(EmfPropertyUtil.isNavigable(property))) {
 				iterator.remove();
 			}
 		}

@@ -22,6 +22,7 @@ import javax.tools.JavaFileObject;
 import javax.tools.StandardJavaFileManager;
 import javax.tools.ToolProvider;
 
+import org.eclipse.uml2.uml.Model;
 import org.junit.Assert;
 import org.osgi.framework.wiring.BundleWiring;
 import org.pavanecce.common.code.metamodel.CodeClassifier;
@@ -40,12 +41,17 @@ import org.pavanecce.common.text.workspace.TextWorkspace;
 import org.pavanecce.common.util.FileUtil;
 import org.pavanecce.common.util.VersionNumber;
 import org.pavanecce.uml.common.util.IFileLocator;
+import org.pavanecce.uml.ocl2code.OclCodeBuilder;
 import org.pavanecce.uml.test.uml2code.test.AdaptableFileLocator;
 import org.pavanecce.uml.test.uml2code.test.TestBundle;
 import org.pavanecce.uml.uml2code.AbstractCodeGenerator;
+import org.pavanecce.uml.uml2code.codemodel.CodeModelBuilder;
+import org.pavanecce.uml.uml2code.codemodel.UmlCodeModelVisitorAdaptor;
+import org.pavanecce.uml.uml2code.java.AssociationCollectionCodeDecorator;
 import org.pavanecce.uml.uml2code.java.EmfJavaCodeGenerator;
 import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
 import org.pavanecce.uml.uml2code.javascript.JavaScriptGenerator;
+import org.pavanecce.uml.uml2code.jpa.AbstractJavaCodeDecorator;
 import org.phidias.compile.BundleJavaManager;
 import org.phidias.compile.ResourceResolver;
 import org.slf4j.Logger;
@@ -58,6 +64,10 @@ public abstract class AbstractPotentiallyJavaCompilingTest extends Assert {
 	private ScriptEngine javaScriptEngine;
 	private ScriptContext javaScriptContext;
 	private ClassLoader classLoader;
+	private UmlCodeModelVisitorAdaptor adaptor;
+	protected CodeModelBuilder builder;
+	protected Model model;
+	private TextFileGenerator textFileGenerator;
 
 	public AbstractPotentiallyJavaCompilingTest() {
 		super();
@@ -142,8 +152,9 @@ public abstract class AbstractPotentiallyJavaCompilingTest extends Assert {
 			List<String> options = new ArrayList<String>();
 
 			options.add("-proc:none"); // don't process annotations (typical for
-										// jsps)
-										// options.add("-verbose"); // Phidias adds to the default verbose
+			                           // jsps)
+			                           // options.add("-verbose"); // Phidias
+			                           // adds to the default verbose
 			// // output
 			options.add("-d");
 			options.add(destination.getCanonicalPath());
@@ -297,6 +308,54 @@ public abstract class AbstractPotentiallyJavaCompilingTest extends Assert {
 
 	public void setJavaScriptContext(ScriptContext javaScriptContext) {
 		this.javaScriptContext = javaScriptContext;
+	}
+
+	public UmlCodeModelVisitorAdaptor getAdaptor() {
+		return adaptor;
+	}
+
+	public void setAdaptor(UmlCodeModelVisitorAdaptor adaptor) {
+		this.adaptor = adaptor;
+	}
+
+	public void generateCode(AbstractCodeGenerator codeGenerator, AbstractJavaCodeDecorator... decorators) throws Exception {
+		setup(new CodeModelBuilder(true), codeGenerator, decorators);
+	}
+
+	public void setup(CodeModelBuilder codeModelBuilder, AbstractCodeGenerator codeGenerator, AbstractJavaCodeDecorator... decorators) throws Exception {
+		this.builder = codeModelBuilder;
+		this.setup();
+		this.setJavaCodeGenerator(codeGenerator);
+		if (getCodeGenerator() instanceof JavaCodeGenerator) {
+			JavaCodeGenerator jcg = (JavaCodeGenerator) getCodeGenerator();
+			// jcg.addDecorator(new AssociationCollectionCodeDecorator());
+			for (AbstractJavaCodeDecorator cd : decorators) {
+				jcg.addDecorator(cd);
+			}
+		}
+		setAdaptor(new UmlCodeModelVisitorAdaptor());
+		this.getAdaptor().startVisiting(builder, getModel());
+		this.getAdaptor().startVisiting(new OclCodeBuilder(), getModel());
+		this.textFileGenerator = generateSourceCode(this.getAdaptor().getCodeModel());
+		if (getCodeGenerator() instanceof JavaCodeGenerator) {
+			setClassLoader(this.compile(textFileGenerator.getNewFiles()));
+		}
+	}
+
+	public TextFileGenerator getTextFileGenerator() {
+		return textFileGenerator;
+	}
+
+	public CodeModelBuilder getBuilder() {
+		return builder;
+	}
+
+	public Model getModel() {
+		return model;
+	}
+
+	public void setModel(Model model) {
+		this.model = model;
 	}
 
 }
