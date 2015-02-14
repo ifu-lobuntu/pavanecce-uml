@@ -22,11 +22,4 @@ Implement basic VDML on top of CMMN/UML
 	- generate reputation based on CapabilityOffers and then ValuePropositions
 	- generate commitment and payment based on VDML ValueAdds
 	- generate bonus based on ValuAdds
-	 	
-Implement Inbox (MyDashboard???)
-Implement Outbox on MyDashboard
 
-	
-Implement UML Diagramming
-Implement CMMN Diagramming
-Implement VDML Diagramming 
