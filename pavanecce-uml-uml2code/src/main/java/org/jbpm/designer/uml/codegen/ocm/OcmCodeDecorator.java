@@ -1,25 +1,25 @@
-package org.pavanecce.uml.uml2code.ocm;
+package org.jbpm.designer.uml.codegen.ocm;
 
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import org.pavanecce.common.code.metamodel.CodeClass;
-import org.pavanecce.common.code.metamodel.CodeClassifier;
-import org.pavanecce.common.code.metamodel.CodeField;
-import org.pavanecce.common.code.metamodel.documentdb.ChildDocument;
-import org.pavanecce.common.code.metamodel.documentdb.ChildDocumentCollection;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentEnumProperty;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentNodeType;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentProperty;
-import org.pavanecce.common.code.metamodel.documentdb.IDocumentElement;
-import org.pavanecce.common.code.metamodel.documentdb.ParentDocument;
-import org.pavanecce.common.code.metamodel.documentdb.ReferencedDocument;
-import org.pavanecce.common.code.metamodel.documentdb.ReferencedDocumentCollection;
-import org.pavanecce.common.util.NameConverter;
-import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
-import org.pavanecce.uml.uml2code.jpa.AbstractJavaCodeDecorator;
+import org.jbpm.designer.uml.code.metamodel.CodeClass;
+import org.jbpm.designer.uml.code.metamodel.CodeClassifier;
+import org.jbpm.designer.uml.code.metamodel.CodeField;
+import org.jbpm.designer.uml.code.metamodel.documentdb.ChildDocument;
+import org.jbpm.designer.uml.code.metamodel.documentdb.ChildDocumentCollection;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentEnumProperty;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentNodeType;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentProperty;
+import org.jbpm.designer.uml.code.metamodel.documentdb.IDocumentElement;
+import org.jbpm.designer.uml.code.metamodel.documentdb.ParentDocument;
+import org.jbpm.designer.uml.code.metamodel.documentdb.ReferencedDocument;
+import org.jbpm.designer.uml.code.metamodel.documentdb.ReferencedDocumentCollection;
+import org.jbpm.designer.uml.codegen.java.JavaCodeGenerator;
+import org.jbpm.designer.uml.codegen.jpa.AbstractJavaCodeDecorator;
+import org.jbpm.designer.uml.codegen.util.NameConverter;
 
 public class OcmCodeDecorator extends AbstractJavaCodeDecorator {
 	@Override

@@ -1,10 +1,10 @@
 package org.pavanecce.uml.ocl2code.common;
 
 import org.eclipse.uml2.uml.EnumerationLiteral;
-import org.pavanecce.common.code.metamodel.CodeConstructor;
-import org.pavanecce.common.code.metamodel.CodeEnumeration;
-import org.pavanecce.common.code.metamodel.CodeField;
-import org.pavanecce.common.code.metamodel.statements.PortableStatement;
+import org.jbpm.designer.uml.code.metamodel.CodeConstructor;
+import org.jbpm.designer.uml.code.metamodel.CodeEnumeration;
+import org.jbpm.designer.uml.code.metamodel.CodeField;
+import org.jbpm.designer.uml.code.metamodel.statements.PortableStatement;
 import org.pavanecce.common.util.NameConverter;
 
 public class CodeUtil {

@@ -2,20 +2,25 @@ package org.pavanecce.uml.test.uml2code.ocl;
 
 import javax.script.ScriptException;
 
+import org.jbpm.designer.uml.codegen.codemodel.CodeModelBuilder;
+import org.jbpm.designer.uml.codegen.java.JavaCodeGenerator;
+import org.pavanecce.common.test.util.SourceGeneratingTestHelper;
+import org.pavanecce.uml.ocl2code.OclCodeBuilder;
 import org.pavanecce.uml.uml2code.java.AssociationCollectionCodeDecorator;
-import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
 
 public class JavaTestInit {
 
-	public static void initJava() throws Exception, ScriptException {
-		AbstractOclTest.example.generateCode(new JavaCodeGenerator(), new AssociationCollectionCodeDecorator());
-		AbstractOclTest.example.initScriptingEngine();
-		AbstractOclTest.eval("ConstructionCase=Packages.test.ConstructionCase;");
-		AbstractOclTest.eval("HousePlan=Packages.test.HousePlan;");
-		AbstractOclTest.eval("House=Packages.test.House;");
-		AbstractOclTest.eval("WallPlan=Packages.test.WallPlan;");
-		AbstractOclTest.eval("RoomPlan=Packages.test.RoomPlan;");
-		AbstractOclTest.eval("HouseStatus=Packages.test.HouseStatus;");
+	public static void initJava(SourceGeneratingTestHelper helper) throws Exception{
+		helper.setBuilders(new CodeModelBuilder(true),new OclCodeBuilder());
+		helper.setDecorators(new AssociationCollectionCodeDecorator());
+		helper.generateCode(new JavaCodeGenerator());
+		helper.initScriptingEngine();
+		helper.eval("ConstructionCase=Packages.test.ConstructionCase;");
+		helper.eval("HousePlan=Packages.test.HousePlan;");
+		helper.eval("House=Packages.test.House;");
+		helper.eval("WallPlan=Packages.test.WallPlan;");
+		helper.eval("RoomPlan=Packages.test.RoomPlan;");
+		helper.eval("HouseStatus=Packages.test.HouseStatus;");
 	}
 
 }

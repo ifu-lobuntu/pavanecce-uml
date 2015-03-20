@@ -1,11 +1,11 @@
 package org.pavanecce.uml.ocl2code.creators;
 
 import org.eclipse.uml2.uml.Operation;
-import org.pavanecce.common.code.metamodel.CodeClassifier;
-import org.pavanecce.common.code.metamodel.CodeExpression;
-import org.pavanecce.common.code.metamodel.OclStandardLibrary;
-import org.pavanecce.common.code.metamodel.expressions.IsNullExpression;
-import org.pavanecce.common.code.metamodel.expressions.MethodCallExpression;
+import org.jbpm.designer.uml.code.metamodel.CodeClassifier;
+import org.jbpm.designer.uml.code.metamodel.CodeExpression;
+import org.jbpm.designer.uml.code.metamodel.OclStandardLibrary;
+import org.jbpm.designer.uml.code.metamodel.expressions.IsNullExpression;
+import org.jbpm.designer.uml.code.metamodel.expressions.MethodCallExpression;
 
 public class AbstractOperationCallCreator {
 

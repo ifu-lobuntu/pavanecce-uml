@@ -35,7 +35,7 @@
 		<level value="error" />
 		<appender-ref ref="ConsoleUml" />
 	</logger>
-	<logger name="org.pavanecce.uml.uml2code">
+	<logger name="org.jbpm.designer.uml.codegen">
 		<level value="error" />
 		<appender-ref ref="ConsoleUml" />
 	</logger>

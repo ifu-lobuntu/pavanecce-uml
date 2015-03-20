@@ -6,16 +6,16 @@ import org.eclipse.ocl.uml.OperationCallExp;
 import org.eclipse.ocl.uml.TypeExp;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Operation;
-import org.pavanecce.common.code.metamodel.CodeClassifier;
-import org.pavanecce.common.code.metamodel.CodeExpression;
-import org.pavanecce.common.code.metamodel.CodeParameter;
-import org.pavanecce.common.code.metamodel.OclStandardLibrary;
-import org.pavanecce.common.code.metamodel.expressions.BinaryOperatorExpression;
-import org.pavanecce.common.code.metamodel.expressions.MethodCallExpression;
-import org.pavanecce.common.code.metamodel.expressions.NotExpression;
-import org.pavanecce.common.code.metamodel.expressions.PortableExpression;
-import org.pavanecce.common.code.metamodel.expressions.TernaryExpression;
-import org.pavanecce.uml.common.util.EmfClassifierUtil;
+import org.jbpm.designer.uml.code.metamodel.CodeClassifier;
+import org.jbpm.designer.uml.code.metamodel.CodeExpression;
+import org.jbpm.designer.uml.code.metamodel.CodeParameter;
+import org.jbpm.designer.uml.code.metamodel.OclStandardLibrary;
+import org.jbpm.designer.uml.code.metamodel.expressions.BinaryOperatorExpression;
+import org.jbpm.designer.uml.code.metamodel.expressions.MethodCallExpression;
+import org.jbpm.designer.uml.code.metamodel.expressions.NotExpression;
+import org.jbpm.designer.uml.code.metamodel.expressions.PortableExpression;
+import org.jbpm.designer.uml.code.metamodel.expressions.TernaryExpression;
+import org.jbpm.designer.uml.codegen.util.EmfClassifierUtil;
 import org.pavanecce.uml.ocl2code.common.OclTypeNames;
 
 public class PrimitiveTypeOperCallCreator extends AbstractOperationCallCreator {

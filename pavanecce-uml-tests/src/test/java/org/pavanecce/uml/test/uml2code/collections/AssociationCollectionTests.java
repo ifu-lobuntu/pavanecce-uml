@@ -2,35 +2,30 @@ package org.pavanecce.uml.test.uml2code.collections;
 
 import javax.script.ScriptException;
 
-import org.junit.AfterClass;
+import org.jbpm.designer.uml.codegen.codemodel.CodeModelBuilder;
+import org.jbpm.designer.uml.codegen.java.JavaCodeGenerator;
+import org.junit.After;
 import org.junit.Assert;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.pavanecce.common.test.util.ConstructionCaseExample;
-import org.pavanecce.uml.uml2code.AbstractCodeGenerator;
-import org.pavanecce.uml.uml2code.codemodel.CodeModelBuilder;
+import org.pavanecce.common.test.util.SourceGeneratingTestHelper;
 import org.pavanecce.uml.uml2code.java.AssociationCollectionCodeDecorator;
-import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
-import org.pavanecce.uml.uml2code.jpa.AbstractJavaCodeDecorator;
 
 public class AssociationCollectionTests extends Assert {
-	static ConstructionCaseExample example = new ConstructionCaseExample("AssociationCollections") {
-		@Override
-		public void setup(CodeModelBuilder codeModelBuilder, AbstractCodeGenerator codeGenerator, AbstractJavaCodeDecorator... decorators) throws Exception {
-			super.setup(codeModelBuilder, codeGenerator, decorators);
-			initScriptingEngine();
-		};
-	};
+	ConstructionCaseExample example = new ConstructionCaseExample("AssociationCollections");
+	SourceGeneratingTestHelper helper = new SourceGeneratingTestHelper(example);
 
-	@AfterClass
-	public static void after() {
-		example.after();
+	@After
+	public void after() {
+		helper.after();
 	}
 
-	@BeforeClass
-	public static void setup() throws Exception {
-		JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
-		example.setup(new CodeModelBuilder(true), codeGenerator,new AssociationCollectionCodeDecorator());
+	@Before
+	public void setup() throws Exception {
+		helper.setBuilders(new CodeModelBuilder(true));
+		helper.setDecorators(new AssociationCollectionCodeDecorator());
+		helper.setup(new JavaCodeGenerator());
 	}
 
 	@Test
@@ -73,6 +68,6 @@ public class AssociationCollectionTests extends Assert {
 	}
 
 	private Object eval(String string) throws ScriptException {
-		return example.getJavaScriptEngine().eval(string);
+		return helper.eval(string);
 	}
 }

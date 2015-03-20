@@ -11,15 +11,15 @@ import org.eclipse.ocl.expressions.CollectionKind;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuralFeature;
-import org.pavanecce.common.code.metamodel.CodeTypeReference;
-import org.pavanecce.uml.common.util.EmfAssociationUtil;
-import org.pavanecce.uml.common.util.EmfElementFinder;
-import org.pavanecce.uml.common.util.EmfPropertyUtil;
-import org.pavanecce.uml.common.util.PersistentNameUtil;
-import org.pavanecce.uml.common.util.emulated.AssociationClassToEnd;
-import org.pavanecce.uml.common.util.emulated.EndToAssociationClass;
+import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
+import org.jbpm.designer.uml.codegen.StdlibMap;
+import org.jbpm.designer.uml.codegen.util.EmfAssociationUtil;
+import org.jbpm.designer.uml.codegen.util.EmfElementFinder;
+import org.jbpm.designer.uml.codegen.util.EmfPropertyUtil;
+import org.jbpm.designer.uml.codegen.util.PersistentNameUtil;
+import org.jbpm.designer.uml.codegen.util.emulated.AssociationClassToEnd;
+import org.jbpm.designer.uml.codegen.util.emulated.EndToAssociationClass;
 import org.pavanecce.uml.ocl2code.common.UmlToCodeMaps;
-import org.pavanecce.uml.uml2code.StdlibMap;
 
 public final class PropertyMap extends PackageableElementMap {
 	private Property property;

@@ -2,20 +2,21 @@ package org.pavanecce.uml.uml2code.java;
 
 import java.util.Collection;
 
-import org.pavanecce.common.code.metamodel.AssociationCollectionTypeReference;
-import org.pavanecce.common.code.metamodel.CodeClass;
-import org.pavanecce.common.code.metamodel.CodeClassifier;
-import org.pavanecce.common.code.metamodel.CodeCollectionKind;
-import org.pavanecce.common.code.metamodel.CodeField;
-import org.pavanecce.common.code.metamodel.CodeTypeReference;
-import org.pavanecce.common.code.metamodel.CollectionTypeReference;
-import org.pavanecce.common.code.metamodel.PrimitiveTypeReference;
+import org.jbpm.designer.uml.code.metamodel.AssociationCollectionTypeReference;
+import org.jbpm.designer.uml.code.metamodel.CodeClass;
+import org.jbpm.designer.uml.code.metamodel.CodeClassifier;
+import org.jbpm.designer.uml.code.metamodel.CodeCollectionKind;
+import org.jbpm.designer.uml.code.metamodel.CodeField;
+import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
+import org.jbpm.designer.uml.code.metamodel.CollectionTypeReference;
+import org.jbpm.designer.uml.code.metamodel.PrimitiveTypeReference;
+import org.jbpm.designer.uml.codegen.AbstractCodeGenerator;
+import org.jbpm.designer.uml.codegen.java.JavaCodeGenerator;
+import org.jbpm.designer.uml.codegen.jpa.AbstractJavaCodeDecorator;
+import org.jbpm.designer.uml.codegen.util.NameConverter;
 import org.pavanecce.common.collections.ManyToManyCollection;
 import org.pavanecce.common.collections.ManyToManySet;
 import org.pavanecce.common.collections.OneToManySet;
-import org.pavanecce.common.util.NameConverter;
-import org.pavanecce.uml.uml2code.AbstractCodeGenerator;
-import org.pavanecce.uml.uml2code.jpa.AbstractJavaCodeDecorator;
 
 public class AssociationCollectionCodeDecorator extends AbstractJavaCodeDecorator {
 

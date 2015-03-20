@@ -2,9 +2,16 @@ package org.pavanecce.uml.test.uml2code.cmmn;
 
 import java.io.File;
 
-import org.pavanecce.common.code.metamodel.CodeClassifier;
-import org.pavanecce.common.code.metamodel.CodeModel;
+import org.jbpm.designer.uml.code.metamodel.CodeClassifier;
+import org.jbpm.designer.uml.code.metamodel.CodeModel;
+import org.jbpm.designer.uml.codegen.codemodel.CodeModelBuilder;
+import org.jbpm.designer.uml.codegen.java.HashcodeDecorator;
+import org.jbpm.designer.uml.codegen.java.JavaCodeGenerator;
+import org.jbpm.designer.uml.codegen.jpa.JpaCodeDecorator;
+import org.jbpm.designer.uml.codegen.ocm.CndTextGenerator;
+import org.jbpm.designer.uml.codegen.ocm.OcmCodeDecorator;
 import org.pavanecce.common.test.util.ConstructionCaseExample;
+import org.pavanecce.common.test.util.SourceGeneratingTestHelper;
 import org.pavanecce.common.text.filegeneration.TextFileGenerator;
 import org.pavanecce.common.text.filegeneration.TextNodeVisitorAdapter;
 import org.pavanecce.common.text.workspace.ProjectNameStrategy;
@@ -17,23 +24,20 @@ import org.pavanecce.common.text.workspace.TextWorkspace;
 import org.pavanecce.common.util.VersionNumber;
 import org.pavanecce.uml.test.uml2code.ocm.OcmTests;
 import org.pavanecce.uml.uml2code.cmmn.CmmnTextGenerator;
-import org.pavanecce.uml.uml2code.java.HashcodeDecorator;
-import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
-import org.pavanecce.uml.uml2code.jpa.JpaCodeDecorator;
-import org.pavanecce.uml.uml2code.ocm.CndTextGenerator;
-import org.pavanecce.uml.uml2code.ocm.OcmCodeDecorator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class CmmnTestArtifactGenerator extends OcmTests {
+public class CmmnTestArtifactGenerator extends OcmTests {
 	static Logger logger = LoggerFactory.getLogger(CmmnTestArtifactGenerator.class);
 
 	public static void main(String[] args) throws Exception {
+		new CmmnTestArtifactGenerator().doit(args);
+	}
+	public void doit(String[] args) throws Exception {
 		final File outputRoot = new File("/home/ampie/Code/pavanecce/pavanecce-cmmn/");
-		// final File outputRoot = new File("/home/ampie/Code/pavanecce/pavanecce-uml");
-		example = new ConstructionCaseExample("") {
+		SourceGeneratingTestHelper helper =new SourceGeneratingTestHelper(new ConstructionCaseExample("asdf")){
 			@Override
-			protected TextFileGenerator generateSourceCode(CodeModel codeModel) {
+			public TextFileGenerator generateSourceCode(CodeModel codeModel) {
 				TextWorkspace tw = new TextWorkspace("thisgoesnowhere");
 				TextFileGenerator tfg = new TextFileGenerator(outputRoot);
 				TextProjectDefinition tfd = new TextProjectDefinition(ProjectNameStrategy.SUFFIX_ONLY, "pavanecce-cmmn-jbpm");
@@ -49,8 +53,8 @@ public abstract class CmmnTestArtifactGenerator extends OcmTests {
 				return tfg;
 			}
 		};
-		// example.generateCode(new JavaCodeGenerator(), new JpaCodeDecorator());
-		example.generateCode(new JavaCodeGenerator(), new OcmCodeDecorator(), new JpaCodeDecorator(), new HashcodeDecorator() {
+		helper.setBuilders(new CodeModelBuilder(false));
+		helper.setDecorators(new JpaCodeDecorator(), new OcmCodeDecorator(), new HashcodeDecorator() {
 			@Override
 			public void appendAdditionalFields(JavaCodeGenerator sb, CodeClassifier cc) {
 				sb.append("  @Field(jcrName = \"test:uuid\", jcrType = \"String\")\n");
@@ -58,6 +62,7 @@ public abstract class CmmnTestArtifactGenerator extends OcmTests {
 				super.appendAdditionalFields(sb, cc);
 			}
 		});
+		helper.generateCode(new JavaCodeGenerator());
 		CndTextGenerator cndTextGenerator = new CndTextGenerator() {
 			@Override
 			public void appendExtraFields() {

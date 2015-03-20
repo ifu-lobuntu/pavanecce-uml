@@ -1,17 +1,17 @@
-package org.pavanecce.uml.uml2code.ocm;
+package org.jbpm.designer.uml.codegen.ocm;
 
 import java.util.Iterator;
 import java.util.Set;
 
-import org.pavanecce.common.code.metamodel.documentdb.ChildDocument;
-import org.pavanecce.common.code.metamodel.documentdb.ChildDocumentCollection;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentEnumProperty;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentNamespace;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentNodeType;
-import org.pavanecce.common.code.metamodel.documentdb.IChildDocument;
-import org.pavanecce.common.code.metamodel.documentdb.IDocumentProperty;
-import org.pavanecce.common.code.metamodel.documentdb.IReferencedDocumentProperty;
-import org.pavanecce.uml.uml2code.AbstractTextGenerator;
+import org.jbpm.designer.uml.code.metamodel.documentdb.ChildDocument;
+import org.jbpm.designer.uml.code.metamodel.documentdb.ChildDocumentCollection;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentEnumProperty;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentNamespace;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentNodeType;
+import org.jbpm.designer.uml.code.metamodel.documentdb.IChildDocument;
+import org.jbpm.designer.uml.code.metamodel.documentdb.IDocumentProperty;
+import org.jbpm.designer.uml.code.metamodel.documentdb.IReferencedDocumentProperty;
+import org.jbpm.designer.uml.codegen.AbstractTextGenerator;
 
 public class CndTextGenerator extends AbstractTextGenerator {
 	public String generate(DocumentNamespace n) {

@@ -5,8 +5,8 @@ import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.pavanecce.common.code.metamodel.CodeVisibilityKind;
-import org.pavanecce.uml.common.util.EmfPropertyUtil;
+import org.jbpm.designer.uml.code.metamodel.CodeVisibilityKind;
+import org.jbpm.designer.uml.codegen.util.EmfPropertyUtil;
 import org.pavanecce.uml.ocl2code.common.UmlToCodeMaps;
 
 public class PackageableElementMap {

@@ -9,14 +9,18 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.junit.Test;
 
 public abstract class AbstractCollectionOperationsTests extends AbstractOclTest {
-	protected static void addOcl() {
+	public AbstractCollectionOperationsTests(String name) {
+		super(name);
+	}
+
+	protected void addOcl() {
 		buildBooleanOperation("excludesAll", "housePlan.wallPlans->excludesAll(house.wallPlans)");
 		buildBooleanOperation("excludes", "housePlan.wallPlans->excludes(house.wallPlans->any(true))");
 		buildBooleanOperation("includesAll", "housePlan.wallPlans->includesAll(house.wallPlans)");
 		buildBooleanOperation("includes", "housePlan.wallPlans->includes(house.wallPlans->any(true))");
 	}
 
-	protected static void buildBooleanOperation(String name, String oclString) {
+	protected void buildBooleanOperation(String name, String oclString) {
 		Operation find = example.getConstructionCase().createOwnedOperation(name, emptyList(String.class), emptyList(Type.class));
 		Parameter result = find.createOwnedParameter("result", example.getType("Boolean"));
 		result.setDirection(ParameterDirectionKind.RETURN_LITERAL);

@@ -13,9 +13,9 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
-import org.pavanecce.common.code.metamodel.CodeModel;
-import org.pavanecce.common.code.metamodel.CodePackage;
-import org.pavanecce.common.code.metamodel.CodePackageReference;
+import org.jbpm.designer.uml.code.metamodel.CodeModel;
+import org.jbpm.designer.uml.code.metamodel.CodePackage;
+import org.jbpm.designer.uml.code.metamodel.CodePackageReference;
 import org.pavanecce.uml.ocl2code.common.UmlToCodeMaps;
 
 public class OclUtilityCreator {

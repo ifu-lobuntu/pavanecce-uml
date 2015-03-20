@@ -1,12 +1,12 @@
-package org.pavanecce.uml.uml2code.ocm;
+package org.jbpm.designer.uml.codegen.ocm;
 
 import java.util.Map;
 
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Model;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentNamespace;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentNodeType;
-import org.pavanecce.uml.uml2code.AbstractUmlVisitorAdaptor;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentNamespace;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentNodeType;
+import org.jbpm.designer.uml.codegen.AbstractUmlVisitorAdaptor;
 
 /**
  * 

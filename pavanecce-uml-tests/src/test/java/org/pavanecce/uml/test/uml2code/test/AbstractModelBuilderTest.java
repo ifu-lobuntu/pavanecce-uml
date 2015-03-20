@@ -11,17 +11,18 @@ import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.jbpm.designer.uml.codegen.codemodel.CodeModelBuilder;
+import org.jbpm.designer.uml.codegen.codemodel.UmlCodeModelVisitorAdaptor;
 import org.junit.Before;
+import org.pavanecce.uml.common.util.StandaloneLocator;
 import org.pavanecce.uml.common.util.UmlResourceSetFactory;
-import org.pavanecce.uml.uml2code.codemodel.CodeModelBuilder;
-import org.pavanecce.uml.uml2code.codemodel.UmlCodeModelVisitorAdaptor;
 
 public class AbstractModelBuilderTest {
 
 	protected CodeModelBuilder builder;
 	protected Model model;
 	protected UmlCodeModelVisitorAdaptor adaptor;
-	protected UmlResourceSetFactory resourceSetFactory = new UmlResourceSetFactory(new AdaptableFileLocator());
+	protected UmlResourceSetFactory resourceSetFactory = new UmlResourceSetFactory(new StandaloneLocator());
 
 	public AbstractModelBuilderTest() {
 		super();

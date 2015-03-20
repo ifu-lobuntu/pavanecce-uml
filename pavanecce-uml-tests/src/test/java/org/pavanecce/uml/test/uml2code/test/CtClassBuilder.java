@@ -18,13 +18,13 @@ import javassist.NotFoundException;
 import javassist.bytecode.MethodInfo;
 import javassist.bytecode.SignatureAttribute;
 
-import org.pavanecce.common.code.metamodel.CodeClass;
-import org.pavanecce.common.code.metamodel.CodeElementType;
-import org.pavanecce.common.code.metamodel.CodeField;
-import org.pavanecce.common.code.metamodel.CodeMethod;
-import org.pavanecce.common.code.metamodel.CodeParameter;
-import org.pavanecce.common.code.metamodel.CodeTypeReference;
-import org.pavanecce.uml.uml2code.AbstractCodeGenerator;
+import org.jbpm.designer.uml.code.metamodel.CodeClass;
+import org.jbpm.designer.uml.code.metamodel.CodeElementType;
+import org.jbpm.designer.uml.code.metamodel.CodeField;
+import org.jbpm.designer.uml.code.metamodel.CodeMethod;
+import org.jbpm.designer.uml.code.metamodel.CodeParameter;
+import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
+import org.jbpm.designer.uml.codegen.AbstractCodeGenerator;
 
 public class CtClassBuilder {
 	Set<CtClass> generatedClasses = new HashSet<CtClass>();

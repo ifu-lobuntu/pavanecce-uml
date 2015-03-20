@@ -7,10 +7,10 @@ import java.io.File;
 import java.io.FileFilter;
 import java.io.FileWriter;
 
+import org.jbpm.designer.uml.code.metamodel.CodeModel;
+import org.jbpm.designer.uml.code.metamodel.CodePackage;
 import org.junit.Before;
 import org.junit.Test;
-import org.pavanecce.common.code.metamodel.CodeModel;
-import org.pavanecce.common.code.metamodel.CodePackage;
 import org.pavanecce.common.util.FileUtil;
 import org.pavanecce.uml.uml2code.python.PythonCodeGenerator;
 import org.python.core.PyString;

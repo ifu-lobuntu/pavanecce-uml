@@ -12,11 +12,11 @@ import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
-import org.pavanecce.common.util.NameConverter;
-import org.pavanecce.uml.common.util.EmfAssociationUtil;
-import org.pavanecce.uml.common.util.EmfClassifierUtil;
-import org.pavanecce.uml.common.util.EmfPropertyUtil;
-import org.pavanecce.uml.uml2code.AbstractTextGenerator;
+import org.jbpm.designer.uml.codegen.AbstractTextGenerator;
+import org.jbpm.designer.uml.codegen.util.EmfAssociationUtil;
+import org.jbpm.designer.uml.codegen.util.EmfClassifierUtil;
+import org.jbpm.designer.uml.codegen.util.EmfPropertyUtil;
+import org.jbpm.designer.uml.codegen.util.NameConverter;
 
 public class CmmnTextGenerator extends AbstractTextGenerator {
 	protected Deque<String> elementStack = new ArrayDeque<String>();

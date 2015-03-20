@@ -43,6 +43,7 @@ import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.pavanecce.uml.common.util.StandaloneLocator;
 import org.pavanecce.uml.common.util.UmlResourceSetFactory;
 import org.pavanecce.uml.reverse.java.ProfileGenerator;
 import org.pavanecce.uml.reverse.java.SimpleUmlGenerator;
@@ -51,13 +52,12 @@ import org.pavanecce.uml.reverse.java.sourcemodel.SourceClass;
 import org.pavanecce.uml.reverse.java.sourcemodel.reflect.JavaDescriptorFactory;
 import org.pavanecce.uml.test.domain.ManyEntity;
 import org.pavanecce.uml.test.domain.OneEntity;
-import org.pavanecce.uml.test.uml2code.test.AdaptableFileLocator;
 
 public class JavaReverseTests {
 	private static File profileFile;
 	private static File simpleFile;
 	private static File jpaFile;
-	private UmlResourceSetFactory resourceSetFactory = new UmlResourceSetFactory(new AdaptableFileLocator());
+	private UmlResourceSetFactory resourceSetFactory = new UmlResourceSetFactory(new StandaloneLocator());
 
 	@BeforeClass
 	public static void classSetup() {

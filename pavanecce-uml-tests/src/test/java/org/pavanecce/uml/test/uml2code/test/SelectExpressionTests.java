@@ -14,13 +14,13 @@ import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.jbpm.designer.uml.code.metamodel.CodeClass;
+import org.jbpm.designer.uml.code.metamodel.CodeMethod;
+import org.jbpm.designer.uml.code.metamodel.expressions.PortableExpression;
+import org.jbpm.designer.uml.code.metamodel.statements.CodeForStatement;
+import org.jbpm.designer.uml.codegen.AbstractCodeGenerator;
+import org.jbpm.designer.uml.codegen.java.JavaCodeGenerator;
 import org.junit.Test;
-import org.pavanecce.common.code.metamodel.CodeClass;
-import org.pavanecce.common.code.metamodel.CodeMethod;
-import org.pavanecce.common.code.metamodel.expressions.PortableExpression;
-import org.pavanecce.common.code.metamodel.statements.CodeForStatement;
-import org.pavanecce.uml.uml2code.AbstractCodeGenerator;
-import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
 
 public class SelectExpressionTests extends AbstractOcl2CodeModelTest {
 	AbstractCodeGenerator jcg = new JavaCodeGenerator();

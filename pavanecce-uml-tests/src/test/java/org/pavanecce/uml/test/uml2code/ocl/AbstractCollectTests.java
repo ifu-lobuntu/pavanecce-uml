@@ -9,7 +9,11 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.junit.Test;
 
 public abstract class AbstractCollectTests extends AbstractOclTest {
-	protected static void addOcl() {
+	public AbstractCollectTests(String name) {
+		super(name);
+	}
+
+	protected void addOcl() {
 		Operation find = example.getConstructionCase().createOwnedOperation("findRoomPlan", list("nameToFind"), list((Type) example.getType("String")));
 		Parameter result = find.createOwnedParameter("result", example.getRoomPlans());
 		result.setDirection(ParameterDirectionKind.RETURN_LITERAL);

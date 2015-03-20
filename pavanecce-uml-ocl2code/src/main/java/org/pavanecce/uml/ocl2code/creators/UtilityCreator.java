@@ -1,7 +1,7 @@
 package org.pavanecce.uml.ocl2code.creators;
 
-import org.pavanecce.common.code.metamodel.CodePackage;
-import org.pavanecce.common.code.metamodel.CodePackageReference;
+import org.jbpm.designer.uml.code.metamodel.CodePackage;
+import org.jbpm.designer.uml.code.metamodel.CodePackageReference;
 
 public class UtilityCreator {
 	static private final ThreadLocal<CodePackageReference> utilPath = new ThreadLocal<CodePackageReference>();

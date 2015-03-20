@@ -16,13 +16,13 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.StateMachine;
-import org.pavanecce.common.code.metamodel.CodePackageReference;
-import org.pavanecce.common.code.metamodel.CodeTypeReference;
+import org.jbpm.designer.uml.code.metamodel.CodePackageReference;
+import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
+import org.jbpm.designer.uml.codegen.StdlibMap;
+import org.jbpm.designer.uml.codegen.util.EmfParameterUtil;
+import org.jbpm.designer.uml.codegen.util.EmfWorkspace;
 import org.pavanecce.common.util.NameConverter;
-import org.pavanecce.uml.common.util.EmfParameterUtil;
-import org.pavanecce.uml.common.util.EmfWorkspace;
 import org.pavanecce.uml.ocl2code.common.UmlToCodeMaps;
-import org.pavanecce.uml.uml2code.StdlibMap;
 
 public class OperationMap extends PackageableElementMap {
 	private NamedElement operation = null;

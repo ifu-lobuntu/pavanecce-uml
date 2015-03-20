@@ -15,34 +15,39 @@ import org.apache.jackrabbit.commons.cnd.CndImporter;
 import org.apache.jackrabbit.core.TransientRepository;
 import org.apache.jackrabbit.ocm.mapper.impl.annotation.AnnotationMapperImpl;
 import org.apache.jackrabbit.ocm.reflection.ReflectionUtils;
-import org.junit.BeforeClass;
-import org.pavanecce.common.code.metamodel.CodeClass;
-import org.pavanecce.common.code.metamodel.CodeClassifier;
-import org.pavanecce.common.code.metamodel.CodePackage;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentNamespace;
+import org.jbpm.designer.uml.code.metamodel.CodeClass;
+import org.jbpm.designer.uml.code.metamodel.CodeClassifier;
+import org.jbpm.designer.uml.code.metamodel.CodePackage;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentNamespace;
+import org.jbpm.designer.uml.codegen.java.JavaCodeGenerator;
+import org.jbpm.designer.uml.codegen.ocm.CndTextGenerator;
+import org.jbpm.designer.uml.codegen.ocm.DocumentModelBuilder;
+import org.jbpm.designer.uml.codegen.ocm.OcmCodeDecorator;
+import org.jbpm.designer.uml.codegen.ocm.UmlDocumentModelFileVisitorAdaptor;
+import org.junit.Before;
 import org.pavanecce.common.ocm.ObjectContentManagerFactory;
 import org.pavanecce.common.ocm.OcmObjectPersistence;
 import org.pavanecce.common.test.util.ConstructionCaseExample;
 import org.pavanecce.common.util.FileUtil;
 import org.pavanecce.uml.test.uml2code.jpa.AbstractPersistenceTest;
 import org.pavanecce.uml.uml2code.java.AssociationCollectionCodeDecorator;
-import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
-import org.pavanecce.uml.uml2code.ocm.CndTextGenerator;
-import org.pavanecce.uml.uml2code.ocm.DocumentModelBuilder;
-import org.pavanecce.uml.uml2code.ocm.OcmCodeDecorator;
-import org.pavanecce.uml.uml2code.ocm.UmlDocumentModelFileVisitorAdaptor;
 
 public class OcmTests extends AbstractPersistenceTest {
 
+	public OcmTests() {
+		super("OcmPersistence");
+	}
+
 	@SuppressWarnings("rawtypes")
-	@BeforeClass
-	public static void setup() throws Exception {
+	@Before
+	public  void setup() throws Exception {
 		FileUtil.deleteRoot(new File("./repository"));
 		System.setProperty("java.naming.factory.initial", "bitronix.tm.jndi.BitronixInitialContextFactory");
 		example = new ConstructionCaseExample("OcmPersistence");
-		example.generateCode(new JavaCodeGenerator(), new AssociationCollectionCodeDecorator(), new OcmCodeDecorator());
+		helper.setDecorators(new AssociationCollectionCodeDecorator(), new OcmCodeDecorator());
+		helper.generateCode(new JavaCodeGenerator());
 		List<Class> classes = getClasses();
-		File outputRoot = example.calculateBinaryOutputRoot();
+		File outputRoot = helper.calculateBinaryOutputRoot();
 		File testCndFile = generateCndFile(outputRoot, new CndTextGenerator());
 		Repository tr = new TransientRepository();
 		Session session = tr.login(new SimpleCredentials("admin", "admin".toCharArray()));
@@ -50,14 +55,14 @@ public class OcmTests extends AbstractPersistenceTest {
 		session.getRootNode().addNode("ConstructionCaseCollection");
 		session.save();
 		// session.logout();
-		ReflectionUtils.setClassLoader(example.getClassLoader());
+		ReflectionUtils.setClassLoader(helper.getClassLoader());
 		ObjectContentManagerFactory objectContentManagerFactory = new ObjectContentManagerFactory(tr, "admin", "admin", new AnnotationMapperImpl(classes), null);
 		OcmObjectPersistence hibernatePersistence = new OcmObjectPersistence(objectContentManagerFactory);
-		example.initScriptingEngine();
-		example.getJavaScriptContext().setAttribute("p", hibernatePersistence, ScriptContext.ENGINE_SCOPE);
+		helper.initScriptingEngine();
+		helper.getJavaScriptContext().setAttribute("p", hibernatePersistence, ScriptContext.ENGINE_SCOPE);
 	}
 
-	protected static File generateCndFile(File outputRoot, CndTextGenerator cndTextGenerator) {
+	protected File generateCndFile(File outputRoot, CndTextGenerator cndTextGenerator) {
 		UmlDocumentModelFileVisitorAdaptor a = new UmlDocumentModelFileVisitorAdaptor();
 		DocumentModelBuilder docBuilder = new DocumentModelBuilder();
 		a.startVisiting(docBuilder, example.getModel());
@@ -69,9 +74,9 @@ public class OcmTests extends AbstractPersistenceTest {
 	}
 
 	@SuppressWarnings("rawtypes")
-	private static List<Class> getClasses() throws Exception {
+	private List<Class> getClasses() throws Exception {
 		List<Class> result = new ArrayList<Class>();
-		addMappedClasses(result, example.getAdaptor().getCodeModel(), (JavaCodeGenerator) example.getCodeGenerator(), example.getClassLoader());
+		addMappedClasses(result, helper.getAdaptor().getCodeModel(), (JavaCodeGenerator) helper.getCodeGenerator(), helper.getClassLoader());
 		return result;
 	}
 

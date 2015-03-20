@@ -11,10 +11,10 @@ import javassist.CtClass;
 import javassist.CtMethod;
 import javassist.CtNewMethod;
 
-import org.pavanecce.common.code.metamodel.CodeClass;
-import org.pavanecce.common.code.metamodel.CodeModel;
-import org.pavanecce.uml.uml2code.AbstractCodeGenerator;
-import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
+import org.jbpm.designer.uml.code.metamodel.CodeClass;
+import org.jbpm.designer.uml.code.metamodel.CodeModel;
+import org.jbpm.designer.uml.codegen.AbstractCodeGenerator;
+import org.jbpm.designer.uml.codegen.java.JavaCodeGenerator;
 
 /**
  * As a User, I would like to be able to define my own types so that they can be used in many different places in the

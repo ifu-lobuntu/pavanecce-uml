@@ -9,7 +9,11 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.junit.Test;
 
 public abstract class AbstractExistsTests extends AbstractOclTest {
-	protected static void addOcl() {
+	public AbstractExistsTests(String name) {
+		super(name);
+	}
+
+	protected void addOcl() {
 		Operation find = example.getConstructionCase().createOwnedOperation("existsRoomPlan", list("nameToFind"), list((Type) example.getType("String")));
 		Parameter result = find.createOwnedParameter("result", example.getType("Boolean"));
 		result.setDirection(ParameterDirectionKind.RETURN_LITERAL);

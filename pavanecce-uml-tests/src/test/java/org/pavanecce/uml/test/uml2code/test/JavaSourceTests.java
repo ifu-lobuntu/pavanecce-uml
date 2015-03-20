@@ -5,9 +5,9 @@ import static org.junit.Assert.assertEquals;
 import java.io.BufferedReader;
 import java.io.StringReader;
 
+import org.jbpm.designer.uml.codegen.AbstractCodeGenerator;
+import org.jbpm.designer.uml.codegen.java.JavaCodeGenerator;
 import org.junit.Test;
-import org.pavanecce.uml.uml2code.AbstractCodeGenerator;
-import org.pavanecce.uml.uml2code.java.JavaCodeGenerator;
 
 /**
  * 

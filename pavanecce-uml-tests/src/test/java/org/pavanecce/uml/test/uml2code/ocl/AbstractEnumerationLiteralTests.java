@@ -10,7 +10,11 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.junit.Test;
 
 public abstract class AbstractEnumerationLiteralTests extends AbstractOclTest {
-	protected static void addOcl() {
+	public AbstractEnumerationLiteralTests(String name) {
+		super(name);
+	}
+
+	protected void addOcl() {
 		Operation find = example.getConstructionCase().createOwnedOperation("doesHouseExist", new BasicEList<String>(), new BasicEList<Type>());
 		Parameter result = find.createOwnedParameter("result", example.getType("Boolean"));
 		result.setDirection(ParameterDirectionKind.RETURN_LITERAL);

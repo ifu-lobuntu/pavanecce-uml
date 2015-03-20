@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.eclipse.ocl.uml.Variable;
 import org.eclipse.uml2.uml.Classifier;
-import org.pavanecce.common.code.metamodel.CodeClassifier;
-import org.pavanecce.common.code.metamodel.CodeExpression;
-import org.pavanecce.common.code.metamodel.CodeParameter;
-import org.pavanecce.common.code.metamodel.CodeTypeReference;
+import org.jbpm.designer.uml.code.metamodel.CodeClassifier;
+import org.jbpm.designer.uml.code.metamodel.CodeExpression;
+import org.jbpm.designer.uml.code.metamodel.CodeParameter;
+import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
 import org.pavanecce.common.util.NameConverter;
 import org.pavanecce.uml.ocl2code.maps.ClassifierMap;
 

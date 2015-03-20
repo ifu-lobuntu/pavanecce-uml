@@ -6,13 +6,13 @@ import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import org.jbpm.designer.uml.code.metamodel.CodeBehaviour;
+import org.jbpm.designer.uml.code.metamodel.CodeClass;
+import org.jbpm.designer.uml.code.metamodel.CodeMethod;
+import org.jbpm.designer.uml.code.metamodel.CodeModel;
+import org.jbpm.designer.uml.code.metamodel.CodePackage;
+import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
 import org.junit.Test;
-import org.pavanecce.common.code.metamodel.CodeBehaviour;
-import org.pavanecce.common.code.metamodel.CodeClass;
-import org.pavanecce.common.code.metamodel.CodeMethod;
-import org.pavanecce.common.code.metamodel.CodeModel;
-import org.pavanecce.common.code.metamodel.CodePackage;
-import org.pavanecce.common.code.metamodel.CodeTypeReference;
 
 public class CodeModelBuilderTests extends AbstractModelBuilderTest {
 	@Test

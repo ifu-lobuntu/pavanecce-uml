@@ -1,9 +1,9 @@
-package org.pavanecce.uml.uml2code.java;
+package org.jbpm.designer.uml.codegen.java;
 
-import org.pavanecce.common.code.metamodel.CodePrimitiveTypeKind;
-import org.pavanecce.common.code.metamodel.CodeTypeReference;
-import org.pavanecce.common.code.metamodel.CollectionTypeReference;
-import org.pavanecce.common.code.metamodel.PrimitiveTypeReference;
+import org.jbpm.designer.uml.code.metamodel.CodePrimitiveTypeKind;
+import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
+import org.jbpm.designer.uml.code.metamodel.CollectionTypeReference;
+import org.jbpm.designer.uml.code.metamodel.PrimitiveTypeReference;
 
 public class EmfJavaCodeGenerator extends JavaCodeGenerator {
 	@Override

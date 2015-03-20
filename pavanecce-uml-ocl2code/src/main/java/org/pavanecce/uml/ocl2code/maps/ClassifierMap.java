@@ -9,19 +9,19 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.PrimitiveType;
-import org.pavanecce.common.code.metamodel.CodeExpression;
-import org.pavanecce.common.code.metamodel.CodePrimitiveTypeKind;
-import org.pavanecce.common.code.metamodel.CodeTypeReference;
-import org.pavanecce.common.code.metamodel.CollectionTypeReference;
-import org.pavanecce.common.code.metamodel.expressions.NewInstanceExpression;
-import org.pavanecce.common.code.metamodel.expressions.NullExpression;
-import org.pavanecce.common.code.metamodel.expressions.PrimitiveDefaultExpression;
-import org.pavanecce.uml.common.util.EmfClassifierUtil;
+import org.jbpm.designer.uml.code.metamodel.CodeExpression;
+import org.jbpm.designer.uml.code.metamodel.CodePrimitiveTypeKind;
+import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
+import org.jbpm.designer.uml.code.metamodel.CollectionTypeReference;
+import org.jbpm.designer.uml.code.metamodel.expressions.NewInstanceExpression;
+import org.jbpm.designer.uml.code.metamodel.expressions.NullExpression;
+import org.jbpm.designer.uml.code.metamodel.expressions.PrimitiveDefaultExpression;
+import org.jbpm.designer.uml.codegen.StdlibMap;
+import org.jbpm.designer.uml.codegen.util.EmfClassifierUtil;
 import org.pavanecce.uml.ocl2code.common.Check;
 import org.pavanecce.uml.ocl2code.common.OclTypeNames;
 import org.pavanecce.uml.ocl2code.common.UmlToCodeMaps;
 import org.pavanecce.uml.ocl2code.creators.OclUtilityCreator;
-import org.pavanecce.uml.uml2code.StdlibMap;
 
 public class ClassifierMap extends PackageableElementMap {
 	protected Classifier elementType;

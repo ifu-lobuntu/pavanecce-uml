@@ -1,7 +1,7 @@
 package org.pavanecce.uml.ocl2code.maps;
 
 import org.eclipse.uml2.uml.Vertex;
-import org.pavanecce.common.code.metamodel.CodeTypeReference;
+import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
 import org.pavanecce.common.util.NameConverter;
 import org.pavanecce.uml.common.util.EmfStateMachineUtil;
 import org.pavanecce.uml.ocl2code.common.UmlToCodeMaps;

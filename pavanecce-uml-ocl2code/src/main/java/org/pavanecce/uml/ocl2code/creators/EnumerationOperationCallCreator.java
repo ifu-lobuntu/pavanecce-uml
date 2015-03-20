@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.eclipse.ocl.uml.OperationCallExp;
 import org.eclipse.uml2.uml.Operation;
-import org.pavanecce.common.code.metamodel.CodeClassifier;
-import org.pavanecce.common.code.metamodel.CodeExpression;
-import org.pavanecce.common.code.metamodel.CodeParameter;
-import org.pavanecce.common.code.metamodel.expressions.BinaryOperatorExpression;
-import org.pavanecce.common.code.metamodel.expressions.NotExpression;
+import org.jbpm.designer.uml.code.metamodel.CodeClassifier;
+import org.jbpm.designer.uml.code.metamodel.CodeExpression;
+import org.jbpm.designer.uml.code.metamodel.CodeParameter;
+import org.jbpm.designer.uml.code.metamodel.expressions.BinaryOperatorExpression;
+import org.jbpm.designer.uml.code.metamodel.expressions.NotExpression;
 
 public class EnumerationOperationCallCreator extends AbstractOperationCallCreator {
 

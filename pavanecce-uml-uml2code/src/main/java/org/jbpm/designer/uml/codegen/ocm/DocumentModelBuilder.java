@@ -1,4 +1,4 @@
-package org.pavanecce.uml.uml2code.ocm;
+package org.jbpm.designer.uml.codegen.ocm;
 
 import java.util.SortedSet;
 
@@ -9,15 +9,15 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentEnumeratedType;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentNamespace;
-import org.pavanecce.common.code.metamodel.documentdb.DocumentNodeType;
-import org.pavanecce.common.code.metamodel.documentdb.IChildDocument;
-import org.pavanecce.common.code.metamodel.documentdb.IDocumentElement;
-import org.pavanecce.common.code.metamodel.documentdb.IDocumentProperty;
-import org.pavanecce.common.util.NameConverter;
-import org.pavanecce.uml.uml2code.AbstractBuilder;
-import org.pavanecce.uml.uml2code.codemodel.DocumentUtil;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentEnumeratedType;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentNamespace;
+import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentNodeType;
+import org.jbpm.designer.uml.code.metamodel.documentdb.IChildDocument;
+import org.jbpm.designer.uml.code.metamodel.documentdb.IDocumentElement;
+import org.jbpm.designer.uml.code.metamodel.documentdb.IDocumentProperty;
+import org.jbpm.designer.uml.codegen.AbstractBuilder;
+import org.jbpm.designer.uml.codegen.codemodel.DocumentUtil;
+import org.jbpm.designer.uml.codegen.util.NameConverter;
 
 public class DocumentModelBuilder extends AbstractBuilder<DocumentNamespace, DocumentNodeType> {
 	DocumentNamespace rootNamespace;

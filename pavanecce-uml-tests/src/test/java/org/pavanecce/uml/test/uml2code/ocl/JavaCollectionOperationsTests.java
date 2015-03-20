@@ -4,10 +4,13 @@ import org.junit.BeforeClass;
 import org.pavanecce.common.test.util.ConstructionCaseExample;
 
 public class JavaCollectionOperationsTests extends AbstractCollectionOperationsTests {
-	@BeforeClass
-	public static void before() throws Exception {
-		example = new ConstructionCaseExample("JavaCollectionOperations");
-		addOcl();
-		JavaTestInit.initJava();
+	public JavaCollectionOperationsTests() {
+		super("JavaCollectionOperations");
 	}
+
+	@Override
+	protected void initLanguage() throws Exception {
+		JavaTestInit.initJava(helper);
+	}
+
 }
