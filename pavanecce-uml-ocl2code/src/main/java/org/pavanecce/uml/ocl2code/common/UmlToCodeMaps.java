@@ -37,11 +37,11 @@ import org.jbpm.designer.uml.codegen.UmlToCodeReferenceMap;
 import org.jbpm.designer.uml.codegen.util.EmfAssociationUtil;
 import org.jbpm.designer.uml.codegen.util.EmfClassifierUtil;
 import org.jbpm.designer.uml.codegen.util.EmfElementFinder;
-import org.jbpm.designer.uml.codegen.util.EmfPropertyUtil;
 import org.jbpm.designer.uml.codegen.util.EmfWorkspace;
 import org.pavanecce.common.util.NameConverter;
 import org.pavanecce.uml.common.util.CodeGenerationStrategy;
 import org.pavanecce.uml.common.util.EmfPackageUtil;
+import org.pavanecce.uml.common.util.EmfPropertyUtil;
 import org.pavanecce.uml.common.util.TagNames;
 import org.pavanecce.uml.common.util.emulated.ArtificialElementFactory;
 import org.pavanecce.uml.common.util.emulated.EmulatedPropertyHolderForAssociation;
@@ -279,7 +279,7 @@ public class UmlToCodeMaps extends UmlToCodeReferenceMap {
 	/**
 	 * Some classifiers in UML would not necessarily be generated as Java classes. Returns false for NakedBehaviors that
 	 * have one or less resulting parameters
-	 * 
+	 *
 	 */
 	public boolean hasCodeClass(Classifier c) {
 		if (c == null || c instanceof Stereotype || c instanceof Collaboration || c instanceof UseCase) {

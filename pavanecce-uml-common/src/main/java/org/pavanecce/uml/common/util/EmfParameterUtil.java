@@ -10,34 +10,7 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
 
-public class EmfParameterUtil {
-
-	public static List<Parameter> getArgumentParameters(NamedElement operation) {
-		List<Parameter> result = new ArrayList<Parameter>();
-		for (Parameter parameter : getParameters(operation)) {
-			if (parameter.getDirection() == ParameterDirectionKind.IN_LITERAL || parameter.getDirection() == ParameterDirectionKind.INOUT_LITERAL) {
-				result.add(parameter);
-			}
-		}
-		return result;
-	}
-
-	public static String toIdentifyingString(Operation o) {
-		return o.getName() + "(" + collectionToString(getArgumentParameters(o), ", ") + ")";
-	}
-
-	private static String collectionToString(List<? extends NamedElement> argumentParameters, String seperator) {
-		if (argumentParameters.isEmpty()) {
-			return "";
-		} else {
-			StringBuilder sb = new StringBuilder();
-			for (NamedElement namedElement : argumentParameters) {
-				sb.append(namedElement.getQualifiedName());
-				sb.append(seperator);
-			}
-			return sb.substring(0, sb.length() - 1);
-		}
-	}
+public class EmfParameterUtil extends org.jbpm.designer.uml.codegen.util.EmfParameterUtil {
 
 	public static List<Parameter> getResultParameters(NamedElement operation) {
 		List<Parameter> result = new ArrayList<Parameter>();

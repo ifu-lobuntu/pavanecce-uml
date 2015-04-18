@@ -15,7 +15,7 @@ import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
 import org.jbpm.designer.uml.codegen.StdlibMap;
 import org.jbpm.designer.uml.codegen.util.EmfAssociationUtil;
 import org.jbpm.designer.uml.codegen.util.EmfElementFinder;
-import org.jbpm.designer.uml.codegen.util.EmfPropertyUtil;
+import org.pavanecce.uml.common.util.EmfPropertyUtil;
 import org.jbpm.designer.uml.codegen.util.PersistentNameUtil;
 import org.jbpm.designer.uml.codegen.util.emulated.AssociationClassToEnd;
 import org.jbpm.designer.uml.codegen.util.emulated.EndToAssociationClass;
@@ -240,7 +240,7 @@ public final class PropertyMap extends PackageableElementMap {
 
 	/**
 	 * IF the other end is not navigable or there is no other end, an assumption of otherEnd=Many is made
-	 * 
+	 *
 	 * @return
 	 */
 	protected boolean otherEndIsOne() {

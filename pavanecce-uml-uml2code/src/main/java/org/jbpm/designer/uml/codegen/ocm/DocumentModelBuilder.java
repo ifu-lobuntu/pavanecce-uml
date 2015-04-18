@@ -5,7 +5,6 @@ import java.util.SortedSet;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
-import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
@@ -18,20 +17,19 @@ import org.jbpm.designer.uml.code.metamodel.documentdb.IDocumentProperty;
 import org.jbpm.designer.uml.codegen.AbstractBuilder;
 import org.jbpm.designer.uml.codegen.codemodel.DocumentUtil;
 import org.jbpm.designer.uml.codegen.util.NameConverter;
-
 public class DocumentModelBuilder extends AbstractBuilder<DocumentNamespace, DocumentNodeType> {
 	DocumentNamespace rootNamespace;
 	private DocumentUtil documentUtil;
 
 	@Override
-	public DocumentNamespace visitModel(Model model) {
+	public DocumentNamespace visitModel(Package model) {
 		DocumentNamespace result = documentUtil.buildNamespace(model);
 		rootNamespace.addChild(result);
 		return result;
 	}
 
 	@Override
-	public void initialize(SortedSet<Model> models, DocumentNamespace p) {
+	public void initialize(SortedSet<Package> models, DocumentNamespace p) {
 		this.rootNamespace = p;
 		this.documentUtil = new DocumentUtil();
 	}

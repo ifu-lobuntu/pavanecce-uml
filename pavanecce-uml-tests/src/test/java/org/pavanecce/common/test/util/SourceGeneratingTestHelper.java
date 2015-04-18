@@ -78,7 +78,7 @@ public class SourceGeneratingTestHelper extends JavaCompilingTestHelper {
 		return tfg;
 	}
 
-	protected String getExtension() {
+	public String getExtension() {
 		if (getCodeGenerator() instanceof JavaCodeGenerator) {
 			return ".java";
 		} else if (getCodeGenerator() instanceof JavaScriptGenerator) {

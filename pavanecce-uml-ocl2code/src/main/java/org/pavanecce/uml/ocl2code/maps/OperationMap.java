@@ -19,7 +19,7 @@ import org.eclipse.uml2.uml.StateMachine;
 import org.jbpm.designer.uml.code.metamodel.CodePackageReference;
 import org.jbpm.designer.uml.code.metamodel.CodeTypeReference;
 import org.jbpm.designer.uml.codegen.StdlibMap;
-import org.jbpm.designer.uml.codegen.util.EmfParameterUtil;
+import org.pavanecce.uml.common.util.EmfParameterUtil;
 import org.jbpm.designer.uml.codegen.util.EmfWorkspace;
 import org.pavanecce.common.util.NameConverter;
 import org.pavanecce.uml.ocl2code.common.UmlToCodeMaps;

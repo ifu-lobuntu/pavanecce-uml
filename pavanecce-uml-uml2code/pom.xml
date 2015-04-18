@@ -8,6 +8,7 @@
 		<version>0.1.0-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
+	<packaging>bundle</packaging>
 	<artifactId>pavanecce-uml-uml2code</artifactId>
 	<repositories>
 		<repository>
@@ -21,16 +22,10 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	<!-- <packaging>bundle</packaging> -->
 	<dependencies>
 		<dependency>
 			<groupId>${project.parent.groupId}</groupId>
 			<artifactId>pavanecce-common-util</artifactId>
-			<version>${project.parent.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>${project.parent.groupId}</groupId>
-			<artifactId>pavanecce-common-code-metamodel</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 		<dependency>
@@ -43,56 +38,21 @@
 			<artifactId>jbpm-designer-uml-codegen</artifactId>
 			<version>6.3.0-SNAPSHOT</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>${project.parent.groupId}</groupId> -->
-		<!-- <artifactId>pavanecce-common-util</artifactId> -->
-		<!-- <version>${project.parent.version}</version> -->
-		<!-- </dependency> -->
-		<dependency>
-			<groupId>org.eclipse.uml2</groupId>
-			<artifactId>org.eclipse.uml2.uml</artifactId>
-			<version>3.1.0.v201006071150</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.felix</groupId> -->
-			<!-- <artifactId>maven-bundle-plugin</artifactId> -->
-			<!-- <extensions>true</extensions> -->
-			<!-- <configuration> -->
-			<!-- <manifestLocation>META-INF</manifestLocation> -->
-			<!-- <instructions> -->
-			<!-- <Import-Package>org.eclipse.emf.common.util, -->
-			<!-- org.eclipse.emf.ecore, -->
-			<!-- org.eclipse.emf.ecore.impl, -->
-			<!-- org.eclipse.emf.ecore.resource, -->
-			<!-- org.eclipse.ocl.expressions, -->
-			<!-- org.eclipse.ocl.types, -->
-			<!-- org.eclipse.ocl.uml, -->
-			<!-- org.eclipse.uml2.uml, -->
-			<!-- org.jbpm.designer.uml.code.metamodel, -->
-			<!-- org.jbpm.designer.uml.code.metamodel.documentdb, -->
-			<!-- org.jbpm.designer.uml.code.metamodel.expressions, -->
-			<!-- org.jbpm.designer.uml.code.metamodel.relationaldb, -->
-			<!-- org.jbpm.designer.uml.code.metamodel.statements, -->
-			<!-- org.pavanecce.common.collections, -->
-			<!-- org.pavanecce.common.util, -->
-			<!-- org.jbpm.designer.uml.codegen.util, -->
-			<!-- org.jbpm.designer.uml.codegen.util.emulated</Import-Package> -->
-			<!-- <Export-Package>org.jbpm.designer.uml.codegen, -->
-			<!-- org.jbpm.designer.uml.codegen.cmmn, -->
-			<!-- org.jbpm.designer.uml.codegen.codemodel, -->
-			<!-- org.jbpm.designer.uml.codegen.java, -->
-			<!-- org.jbpm.designer.uml.codegen.javascript, -->
-			<!-- org.jbpm.designer.uml.codegen.jpa, -->
-			<!-- org.jbpm.designer.uml.codegen.ocm, -->
-			<!-- org.jbpm.designer.uml.codegen.python</Export-Package> -->
-			<!-- <Bundle-SymbolicName>org.jbpm.designer.uml.codegen</Bundle-SymbolicName> -->
-			<!-- <Bundle-Name>org.jbpm.designer.uml.codegen</Bundle-Name> -->
-			<!-- </instructions> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<manifestLocation>META-INF</manifestLocation>
+					<instructions>
+						<Bundle-SymbolicName>org.pavanecce.uml.uml2code</Bundle-SymbolicName>
+						<Bundle-Name>org.pavanecce.uml.uml2code</Bundle-Name>
+					</instructions>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

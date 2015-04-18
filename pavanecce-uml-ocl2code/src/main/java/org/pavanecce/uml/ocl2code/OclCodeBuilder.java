@@ -23,13 +23,13 @@ import org.pavanecce.uml.ocl2code.common.UmlToCodeMaps;
 import org.pavanecce.uml.ocl2code.creators.ExpressionCreator;
 import org.pavanecce.uml.ocl2code.maps.OperationMap;
 import org.pavanecce.uml.ocl2code.maps.PropertyMap;
-
+import org.eclipse.uml2.uml.Package;
 public class OclCodeBuilder extends DefaultCodeModelBuilder {
 	private OclContextFactory oclContextFactory;
 	private UmlToCodeMaps codeMaps;
 
 	@Override
-	public void initialize(SortedSet<Model> models, CodePackage codeModel) {
+	public void initialize(SortedSet<Package> models, CodePackage codeModel) {
 		super.initialize(models, codeModel);
 		ResourceSet rst = models.iterator().next().eResource().getResourceSet();
 		this.oclContextFactory = new OclContextFactory(rst);

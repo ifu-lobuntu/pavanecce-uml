@@ -3,13 +3,12 @@ package org.jbpm.designer.uml.codegen.ocm;
 import java.util.Map;
 
 import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.Package;
 import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentNamespace;
 import org.jbpm.designer.uml.code.metamodel.documentdb.DocumentNodeType;
 import org.jbpm.designer.uml.codegen.AbstractUmlVisitorAdaptor;
-
 /**
- * 
+ *
  */
 public class UmlDocumentModelFileVisitorAdaptor extends AbstractUmlVisitorAdaptor<DocumentNamespace, DocumentNodeType, DocumentModelBuilder> {
 
@@ -20,7 +19,7 @@ public class UmlDocumentModelFileVisitorAdaptor extends AbstractUmlVisitorAdapto
 	}
 
 	@Override
-	public void startVisiting(DocumentModelBuilder builder, Model model) {
+	public void startVisiting(DocumentModelBuilder builder, Package model) {
 		super.startVisiting(builder, model);
 	}
 

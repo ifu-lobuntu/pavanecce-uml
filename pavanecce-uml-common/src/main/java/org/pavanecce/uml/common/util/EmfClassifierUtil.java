@@ -41,7 +41,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.pavanecce.common.util.IntrospectionUtil;
 import org.pavanecce.uml.common.util.AbstractStrategyFactory.ISimpleTypeStrategy;
 
-public class EmfClassifierUtil {
+public class EmfClassifierUtil extends org.jbpm.designer.uml.codegen.util.EmfClassifierUtil {
 	private static Map<String, java.lang.Class<?>> classRegistry;
 
 	public static void setClassRegistry(Map<String, java.lang.Class<?>> reg) {
@@ -63,16 +63,6 @@ public class EmfClassifierUtil {
 
 	public static String getMappedImplementationType(Classifier classifier) {
 		return (String) getTagValue(classifier, TagNames.MAPPED_IMPLEMENTATION_TYPE);
-	}
-
-	public static Object getTagValue(Classifier dt, String mappedImplementationType) {
-		EList<Stereotype> appliedStereotypes = dt.getAppliedStereotypes();
-		for (Stereotype st : appliedStereotypes) {
-			if (st.getDefinition().getEStructuralFeature(mappedImplementationType) != null) {
-				return dt.getValue(st, mappedImplementationType);
-			}
-		}
-		return null;
 	}
 
 	public static boolean hasStrategy(DataType dt, java.lang.Class<? extends ISimpleTypeStrategy> strat) {
@@ -159,47 +149,6 @@ public class EmfClassifierUtil {
 		return result;
 	}
 
-	public static boolean conformsTo(Classifier from, Classifier to) {
-		if (from.getName().equals("OclVoid")) {
-			return true;
-		}
-		if (from instanceof CollectionType && to instanceof CollectionType) {
-			return conformsTo((CollectionType) from, (CollectionType) to);
-		}
-		if (from instanceof PrimitiveType && to instanceof PrimitiveType) {
-			return comformsToLibraryType(from, to.getName());
-		}
-		if (from.equals(to)) {
-			return true;
-		} else if (from.allParents().contains(to)) {
-			return true;
-		} else if (from instanceof BehavioredClassifier) {
-			for (Interface i : ((BehavioredClassifier) from).getAllImplementedInterfaces()) {
-				if (i.equals(to) || i.allParents().contains(to)) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	public static boolean comformsToLibraryType(Type type, String string) {
-		if (type.getName() != null && type.getName().equalsIgnoreCase(string)) {
-			return true;
-		} else if (type instanceof Classifier) {
-			for (Classifier g : ((Classifier) type).getGenerals()) {
-				if (comformsToLibraryType(g, string)) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	public static boolean isSimpleType(Type type) {
-		return type instanceof PrimitiveType
-				|| (type.eClass().equals(UMLPackage.eINSTANCE.getDataType()) && StereotypesHelper.hasStereotype(type, StereotypeNames.VALUE_TYPE));
-	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static Collection<BehavioredClassifier> getConcreteEntityImplementationsOf(Interface baseType, Collection<Package> models) {
@@ -296,25 +245,6 @@ public class EmfClassifierUtil {
 		return EmfClassifierUtil.isPersistent(type) || (type instanceof Interface && !EmfClassifierUtil.isHelper(type));
 	}
 
-	public static boolean isPersistent(Type type) {
-		if (!isComplexStructure(type) || type instanceof Stereotype) {
-			return false;
-		} else {
-			return type instanceof Class || type instanceof Actor || (type instanceof Association && EmfAssociationUtil.isClass((Association) type))
-					|| EmfClassifierUtil.isStructuredDataType(type);
-		}
-	}
-
-	public static boolean isComplexStructure(Type type) {
-		if (type instanceof PrimitiveType) {
-			return false;
-		}
-		if (type instanceof Signal || type instanceof Enumeration || type instanceof Class || type instanceof Actor || type instanceof Collaboration
-				|| type instanceof MessageType || isStructuredDataType(type) || (type instanceof Association && EmfAssociationUtil.isClass((Association) type))) {
-			return true;
-		}
-		return false;
-	}
 
 	public static boolean isFact(Type type) {
 		for (Property property : EmfPropertyUtil.getEffectiveProperties((Classifier) type)) {
@@ -367,10 +297,6 @@ public class EmfClassifierUtil {
 			}
 		}
 		return classifier;
-	}
-
-	public static boolean isPersistentComplexStructure(Type type) {
-		return isPersistent(type) && isComplexStructure(type);
 	}
 
 	public static boolean isDimension(TypedElement te) {

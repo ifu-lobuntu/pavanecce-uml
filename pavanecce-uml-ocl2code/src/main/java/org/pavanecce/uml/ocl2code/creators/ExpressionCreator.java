@@ -33,7 +33,7 @@ import org.jbpm.designer.uml.code.metamodel.expressions.NullExpression;
 import org.jbpm.designer.uml.code.metamodel.expressions.PortableExpression;
 import org.jbpm.designer.uml.code.metamodel.expressions.TernaryExpression;
 import org.jbpm.designer.uml.code.metamodel.statements.SetResultStatement;
-import org.jbpm.designer.uml.codegen.util.EmfClassifierUtil;
+import org.pavanecce.uml.common.util.EmfClassifierUtil;
 import org.jbpm.designer.uml.codegen.util.EmfElementFinder;
 import org.pavanecce.common.util.NameConverter;
 import org.pavanecce.uml.common.ocl.AbstractOclContext;
